@@ -1,0 +1,2284 @@
+openapi: 3.0.3
+info:
+  title: IIQ REST API
+  description: |
+    REST API for managing sessions, TLCs (Traffic Light Controllers), and related resources in the IIQ system.
+    
+    ## Authentication
+    All endpoints require custom header authentication using X-Authorization header. Tokens are managed through the Authorization Token endpoints.
+    
+    ## Authorization Roles
+    - **Platform Admin**: Full system access
+    - **Domain Admin**: Domain-level administration
+    - **TLC Admin/System/Analyst**: TLC management and analysis
+    - **Broker Admin/System/Analyst**: Broker operations
+    - **Monitor Admin/System**: Monitoring capabilities
+  version: 1.0.0
+  contact:
+    name: IIQ Support
+    email: support@monotch.com
+
+servers:
+  - url: http://localhost:8080/api
+    description: Development server
+  - url: https://api.iiq.monotch.com/api
+    description: Production server
+
+security:
+  - customAuth: []
+
+tags:
+  - name: Accounts
+    description: User account management
+  - name: Authorizations
+    description: Role-based access control
+  - name: Authorization Tokens
+    description: Authentication token management
+  - name: Domains
+    description: Domain configuration and management
+  - name: TLCs
+    description: Traffic Light Controller management
+  - name: Sessions
+    description: Active session management
+  - name: Session Logs
+    description: Historical session data
+  - name: Session Templates
+    description: Pre-configured session templates
+  - name: Payload Policies
+    description: Payload filtering policies
+
+paths:
+  # Account endpoints
+  /v1/accounts:
+    get:
+      tags: [Accounts]
+      summary: List all accounts
+      description: |
+        Retrieve a list of all user accounts in the system.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: listAccounts
+      x-required-roles:
+        - PLATFORM_ADMIN
+      responses:
+        '200':
+          description: List of accounts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Accounts]
+      summary: Create new account
+      description: |
+        Create a new user account.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: createAccount
+      x-required-roles:
+        - PLATFORM_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAccount'
+      responses:
+        '201':
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/accounts/{uuid}:
+    get:
+      tags: [Accounts]
+      summary: Get account by UUID
+      description: |
+        Retrieve a specific account by its UUID.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: getAccount
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '200':
+          description: Account retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Accounts]
+      summary: Update account
+      description: |
+        Update an existing account.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: updateAccount
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAccount'
+      responses:
+        '200':
+          description: Account updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAccount'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [Accounts]
+      summary: Delete account
+      description: |
+        Delete an account.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: deleteAccount
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '204':
+          description: Account deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Authorization endpoints
+  /v1/authorizations:
+    get:
+      tags: [Authorizations]
+      summary: List authorizations
+      description: |
+        Retrieve authorizations with optional filtering.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: listAuthorizations
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - name: domain
+          in: query
+          description: Filter by domain name
+          schema:
+            type: string
+        - name: account
+          in: query
+          description: Filter by account UUID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of authorizations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAuthorization'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Authorizations]
+      summary: Create authorization
+      description: |
+        Create a new authorization.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: createAuthorization
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthorization'
+      responses:
+        '201':
+          description: Authorization created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuthorization'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/authorizations/{uuid}:
+    get:
+      tags: [Authorizations]
+      summary: Get authorization by UUID
+      description: |
+        Retrieve a specific authorization.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: getAuthorization
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '200':
+          description: Authorization retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuthorization'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Authorizations]
+      summary: Update authorization
+      description: |
+        Update an existing authorization.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: updateAuthorization
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthorization'
+      responses:
+        '200':
+          description: Authorization updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuthorization'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [Authorizations]
+      summary: Delete authorization
+      description: |
+        Delete an authorization.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: deleteAuthorization
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '204':
+          description: Authorization deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Authorization Token endpoints
+  /v1/authorizationtokens:
+    get:
+      tags: [Authorization Tokens]
+      summary: List authorization tokens
+      description: |
+        Retrieve authorization tokens with optional filtering.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: listAuthorizationTokens
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - name: domain
+          in: query
+          description: Filter by domain name
+          schema:
+            type: string
+        - name: account
+          in: query
+          description: Filter by account UUID
+          schema:
+            type: string
+        - name: authorization
+          in: query
+          description: Filter by authorization UUID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of authorization tokens retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseAuthorizationToken'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Authorization Tokens]
+      summary: Create authorization token
+      description: |
+        Generate a new authorization token.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: createAuthorizationToken
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthorizationToken'
+      responses:
+        '201':
+          description: Authorization token created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuthorizationToken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/authorizationtokens/{uuid}:
+    get:
+      tags: [Authorization Tokens]
+      summary: Get authorization token by UUID
+      description: |
+        Retrieve a specific authorization token.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: getAuthorizationToken
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '200':
+          description: Authorization token retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuthorizationToken'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Authorization Tokens]
+      summary: Update authorization token
+      description: |
+        Update an existing authorization token.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: updateAuthorizationToken
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthorizationToken'
+      responses:
+        '200':
+          description: Authorization token updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAuthorizationToken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [Authorization Tokens]
+      summary: Delete authorization token
+      description: |
+        Revoke an authorization token.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: deleteAuthorizationToken
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '204':
+          description: Authorization token deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Domain endpoints
+  /v1/domains:
+    get:
+      tags: [Domains]
+      summary: List all domains
+      description: |
+        Retrieve a list of all domains.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: listDomains
+      x-required-roles:
+        - PLATFORM_ADMIN
+      responses:
+        '200':
+          description: List of domains retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseDomain'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Domains]
+      summary: Create domain
+      description: |
+        Create a new domain.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: createDomain
+      x-required-roles:
+        - PLATFORM_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestDomain'
+      responses:
+        '201':
+          description: Domain created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDomain'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/domains/{name}:
+    get:
+      tags: [Domains]
+      summary: Get domain by name
+      description: |
+        Retrieve a specific domain by name.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: getDomain
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Domain name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Domain retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDomain'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Domains]
+      summary: Update domain
+      description: |
+        Update an existing domain.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: updateDomain
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Domain name
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestDomain'
+      responses:
+        '200':
+          description: Domain updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDomain'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [Domains]
+      summary: Delete domain
+      description: |
+        Delete a domain.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: deleteDomain
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Domain name
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Domain deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # TLC endpoints
+  /v1/tlcs:
+    get:
+      tags: [TLCs]
+      summary: List TLCs
+      description: |
+        Retrieve TLCs with optional filtering.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC Analyst
+        - Broker Admin, Broker System, Broker Analyst
+        - Monitor Admin, Monitor System
+      operationId: listTlcs
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_ANALYST
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - BROKER_ANALYST
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: domain
+          in: query
+          description: Filter by domain name
+          schema:
+            type: string
+        - name: account
+          in: query
+          description: Filter by account UUID
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by TLC type
+          schema:
+            $ref: '#/components/schemas/TlcType'
+      responses:
+        '200':
+          description: List of TLCs retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseTlc'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [TLCs]
+      summary: Create TLC
+      description: |
+        Create a new Traffic Light Controller.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+      operationId: createTlc
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestTlc'
+      responses:
+        '201':
+          description: TLC created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseTlc'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/tlcs/{uuid}:
+    get:
+      tags: [TLCs]
+      summary: Get TLC by UUID
+      description: |
+        Retrieve a specific TLC.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC Analyst
+        - Broker Admin, Broker System, Broker Analyst
+        - Monitor Admin, Monitor System
+      operationId: getTlc
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_ANALYST
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - BROKER_ANALYST
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '200':
+          description: TLC retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseTlc'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [TLCs]
+      summary: Update TLC
+      description: |
+        Update an existing TLC.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+      operationId: updateTlc
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestTlc'
+      responses:
+        '200':
+          description: TLC updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseTlc'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [TLCs]
+      summary: Delete TLC
+      description: |
+        Delete a TLC.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+      operationId: deleteTlc
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '204':
+          description: TLC deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Session endpoints
+  /v1/sessions:
+    get:
+      tags: [Sessions]
+      summary: List active sessions
+      description: |
+        Retrieve active sessions with optional filtering.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC System
+        - Broker Admin, Broker System
+        - Monitor Admin, Monitor System
+      operationId: listSessions
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_SYSTEM
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: domain
+          in: query
+          description: Filter by domain name
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by session type
+          schema:
+            $ref: '#/components/schemas/SessionType'
+        - name: protocol
+          in: query
+          description: Filter by session protocol
+          schema:
+            $ref: '#/components/schemas/SessionProtocol'
+      responses:
+        '200':
+          description: List of sessions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseSession'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Sessions]
+      summary: Create session
+      description: |
+        Create a new streaming session.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC System
+        - Broker Admin, Broker System
+        - Monitor Admin, Monitor System
+      operationId: createSession
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_SYSTEM
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: X-StreamingService-HostId
+          in: header
+          description: Optional streaming service host identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestSession'
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSession'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/sessions/{token}:
+    get:
+      tags: [Sessions]
+      summary: Get session by token
+      description: |
+        Retrieve a specific session.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC System
+        - Broker Admin, Broker System
+        - Monitor Admin, Monitor System
+      operationId: getSession
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_SYSTEM
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: token
+          in: path
+          required: true
+          description: Session token
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSession'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Sessions]
+      summary: Update session
+      description: |
+        Update session (TCP Streaming Multiplex only).
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC System
+        - Broker Admin, Broker System
+        - Monitor Admin, Monitor System
+      operationId: updateSession
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_SYSTEM
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: token
+          in: path
+          required: true
+          description: Session token
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestTCPStreamingMultiplexSessionDetails'
+      responses:
+        '200':
+          description: Session updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSession'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [Sessions]
+      summary: End session
+      description: |
+        Terminate an active session.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin
+        - Broker Admin
+        - Monitor Admin
+      operationId: deleteSession
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - BROKER_ADMIN
+        - MONITOR_ADMIN
+      parameters:
+        - name: token
+          in: path
+          required: true
+          description: Session token
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Session ended successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Session Log endpoints
+  /v1/sessionlogs:
+    get:
+      tags: [Session Logs]
+      summary: List session logs
+      description: |
+        Retrieve session logs within a time range.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC Analyst
+        - Broker Admin, Broker Analyst
+        - Monitor Admin, Monitor System
+      operationId: listSessionLogs
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_ANALYST
+        - BROKER_ADMIN
+        - BROKER_ANALYST
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: from
+          in: query
+          required: true
+          description: Start time (ISO8601 format)
+          schema:
+            type: string
+            format: date-time
+        - name: until
+          in: query
+          required: true
+          description: End time (ISO8601 format)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of session logs retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseSessionLog'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/sessionlogs/{token}:
+    get:
+      tags: [Session Logs]
+      summary: Get session log by token
+      description: |
+        Retrieve a specific session log.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+        - Domain Admin
+        - TLC Admin, TLC Analyst
+        - Broker Admin, Broker Analyst
+        - Monitor Admin, Monitor System
+      operationId: getSessionLog
+      x-required-roles:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_ANALYST
+        - BROKER_ADMIN
+        - BROKER_ANALYST
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+      parameters:
+        - name: token
+          in: path
+          required: true
+          description: Session token
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session log retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSessionLog'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Session Template endpoints
+  /v1/sessiontemplates:
+    get:
+      tags: [Session Templates]
+      summary: List session templates
+      description: |
+        Retrieve all session templates.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: listSessionTemplates
+      x-required-roles:
+        - PLATFORM_ADMIN
+      responses:
+        '200':
+          description: List of session templates retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponseSessionTemplate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Session Templates]
+      summary: Create session template
+      description: |
+        Create a new session template.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: createSessionTemplate
+      x-required-roles:
+        - PLATFORM_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestSessionTemplate'
+      responses:
+        '201':
+          description: Session template created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseSessionTemplate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/sessiontemplates/{uuid}:
+    delete:
+      tags: [Session Templates]
+      summary: Delete session template
+      description: |
+        Delete a session template.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: deleteSessionTemplate
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '204':
+          description: Session template deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Payload Policy endpoints
+  /v1/payloadpolicies:
+    get:
+      tags: [Payload Policies]
+      summary: List payload policies
+      description: |
+        Retrieve all payload policies.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: listPayloadPolicies
+      x-required-roles:
+        - PLATFORM_ADMIN
+      responses:
+        '200':
+          description: List of payload policies retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResponsePayloadPolicy'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    
+    post:
+      tags: [Payload Policies]
+      summary: Create payload policy
+      description: |
+        Create a new payload policy. Note that creating a policy may end affected sessions.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: createPayloadPolicy
+      x-required-roles:
+        - PLATFORM_ADMIN
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPayloadPolicy'
+      responses:
+        '201':
+          description: Payload policy created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePayloadPolicy'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /v1/payloadpolicies/{uuid}:
+    get:
+      tags: [Payload Policies]
+      summary: Get payload policy by UUID
+      description: |
+        Retrieve a specific payload policy.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: getPayloadPolicy
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '200':
+          description: Payload policy retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePayloadPolicy'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags: [Payload Policies]
+      summary: Delete payload policy
+      description: |
+        Delete a payload policy.
+        
+        **Authorization:** Requires one of these roles:
+        - Platform Admin
+      operationId: deletePayloadPolicy
+      x-required-roles:
+        - PLATFORM_ADMIN
+      parameters:
+        - $ref: '#/components/parameters/uuidPath'
+      responses:
+        '204':
+          description: Payload policy deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    customAuth:
+      type: apiKey
+      in: header
+      name: X-Authorization
+      description: Custom authorization token obtained from Authorization Token endpoints
+
+  parameters:
+    uuidPath:
+      name: uuid
+      in: path
+      required: true
+      description: Resource UUID
+      schema:
+        type: string
+        format: uuid
+
+  responses:
+    BadRequest:
+      description: Bad request - Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    
+    Unauthorized:
+      description: Unauthorized - Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    
+    Forbidden:
+      description: Forbidden - Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    # Error response
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message (e.g., "HTTP 401 Unauthorized")
+        status:
+          type: integer
+          description: HTTP status code
+
+    # Enums
+    AuthorizationRole:
+      type: string
+      enum:
+        - PLATFORM_ADMIN
+        - DOMAIN_ADMIN
+        - TLC_ADMIN
+        - TLC_SYSTEM
+        - TLC_ANALYST
+        - BROKER_ADMIN
+        - BROKER_SYSTEM
+        - BROKER_ANALYST
+        - MONITOR_ADMIN
+        - MONITOR_SYSTEM
+
+    SessionType:
+      type: string
+      enum:
+        - TLC
+        - Broker
+        - Monitor
+
+    SessionProtocol:
+      type: string
+      enum:
+        - TCPStreaming_Singleplex
+        - TCPStreaming_Multiplex
+        - VLOG
+        - IF2
+        - Client_TCPStreaming_Multiplex
+
+    SecurityMode:
+      type: string
+      enum:
+        - NONE
+        - TLSv1_2
+
+    TlcType:
+      type: string
+      enum:
+        - TCPStreaming
+        - VLOG
+
+    PolicyType:
+      type: string
+      enum:
+        - WHITELIST
+        - BLACKLIST
+
+    Direction:
+      type: string
+      enum:
+        - RECEIVE
+
+    # Account schemas
+    RequestAccount:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 50
+          description: Account name
+
+    ResponseAccount:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          description: Account UUID
+        name:
+          type: string
+          description: Account name
+
+    # Authorization schemas
+    RequestAuthorization:
+      type: object
+      required:
+        - role
+      properties:
+        domainName:
+          type: string
+          description: Domain name (converted to lowercase)
+        accountUuid:
+          type: string
+          format: uuid
+          description: Account UUID
+        role:
+          $ref: '#/components/schemas/AuthorizationRole'
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-z0-9]{8}$'
+          description: TLC identifiers (8 chars, lowercase)
+
+    ResponseAuthorization:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        domainName:
+          type: string
+        accountUuid:
+          type: string
+          format: uuid
+        roleName:
+          type: string
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+
+    # Authorization Token schemas
+    RequestAuthorizationToken:
+      type: object
+      required:
+        - authorization
+      properties:
+        authorization:
+          type: string
+          format: uuid
+          description: Authorization UUID
+
+    ResponseAuthorizationToken:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        token:
+          type: string
+          pattern: '^[A-Za-z0-9+/]{42}[A-Za-z0-9+/=]$'
+          description: Custom authorization token value (43-character Base64 string)
+        authorization:
+          type: string
+          format: uuid
+          description: Authorization UUID
+
+    # Domain schemas
+    RequestDomain:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 50
+          description: Domain name (converted to lowercase)
+        statCollection:
+          type: boolean
+          default: false
+          description: Enable statistics collection
+        testMode:
+          type: boolean
+          default: false
+          description: Enable test mode
+        sessionLogRetentionDays:
+          type: integer
+          minimum: 1
+          description: Session log retention period in days
+        statCollectionRetentionDays:
+          type: integer
+          minimum: 1
+          description: Statistics retention period in days
+        tlcLimit:
+          type: integer
+          minimum: 1
+          description: Maximum number of TLCs allowed
+
+    ResponseDomain:
+      type: object
+      properties:
+        name:
+          type: string
+        statCollection:
+          type: boolean
+        testMode:
+          type: boolean
+        sessionLogRetentionDays:
+          type: integer
+        statCollectionRetentionDays:
+          type: integer
+        tlcLimit:
+          type: integer
+          description: Maximum number of TLCs allowed
+
+    # TLC schemas
+    RequestTlc:
+      type: object
+      required:
+        - identifier
+      properties:
+        identifier:
+          type: string
+          pattern: '^[a-z0-9]{8}$'
+          description: TLC identifier (8 chars, lowercase)
+        domain:
+          type: string
+          description: Domain name (converted to lowercase)
+        account:
+          type: string
+          format: uuid
+          description: Account UUID
+        type:
+          $ref: '#/components/schemas/TlcType'
+        details:
+          $ref: '#/components/schemas/VlogDetails'
+
+    ResponseTlc:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        identifier:
+          type: string
+        domain:
+          type: string
+        account:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/TlcType'
+        details:
+          $ref: '#/components/schemas/VlogDetails'
+
+    VlogDetails:
+      type: object
+      required:
+        - autoConnect
+        - itfSynchronization
+      properties:
+        host:
+          type: string
+          description: VLOG host address
+        port:
+          type: integer
+          minimum: 1
+          maximum: 65535
+          description: VLOG port number
+        authorization:
+          type: string
+          description: Authorization credentials
+        itf:
+          type: string
+          description: ITF configuration
+        autoConnect:
+          type: boolean
+          default: false
+          description: Auto-connect on startup
+        itfSynchronization:
+          type: boolean
+          default: false
+          description: Enable ITF synchronization
+        vlogVersion:
+          type: string
+          description: VLOG version
+        itfVersion:
+          type: string
+          description: ITF version
+        itfUrl:
+          type: string
+          format: uri
+          description: ITF URL
+
+    # Payload Policy schemas
+    RequestPayloadPolicy:
+      type: object
+      required:
+        - type
+        - direction
+        - priority
+      properties:
+        domain:
+          type: string
+          description: Domain name (converted to lowercase)
+        account:
+          type: string
+          format: uuid
+          description: Account UUID
+        payloadType:
+          type: integer
+          description: Payload type identifier
+        type:
+          $ref: '#/components/schemas/PolicyType'
+        sessionType:
+          $ref: '#/components/schemas/SessionType'
+        direction:
+          $ref: '#/components/schemas/Direction'
+        priority:
+          type: integer
+          description: Policy priority (lower values = higher priority)
+
+    ResponsePayloadPolicy:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        domain:
+          type: string
+        account:
+          type: string
+          format: uuid
+        payloadType:
+          type: integer
+        type:
+          $ref: '#/components/schemas/PolicyType'
+        sessionType:
+          $ref: '#/components/schemas/SessionType'
+        direction:
+          $ref: '#/components/schemas/Direction'
+        priority:
+          type: integer
+
+    # Session schemas
+    RequestSession:
+      type: object
+      required:
+        - domain
+        - type
+        - protocol
+        - details
+      properties:
+        domain:
+          type: string
+          minLength: 1
+          description: Domain name (converted to lowercase)
+        type:
+          $ref: '#/components/schemas/SessionType'
+        protocol:
+          $ref: '#/components/schemas/SessionProtocol'
+        details:
+          oneOf:
+            - $ref: '#/components/schemas/RequestTCPStreamingSingleplexSessionDetails'
+            - $ref: '#/components/schemas/RequestTCPStreamingMultiplexSessionDetails'
+            - $ref: '#/components/schemas/RequestVlogSessionDetails'
+            - $ref: '#/components/schemas/RequestIf2SessionDetails'
+            - $ref: '#/components/schemas/RequestClientTCPStreamingMultiplexSessionDetails'
+          discriminator:
+            propertyName: protocol
+
+    ResponseSession:
+      type: object
+      properties:
+        domain:
+          type: string
+        type:
+          $ref: '#/components/schemas/SessionType'
+        token:
+          type: string
+          description: Session token
+        protocol:
+          $ref: '#/components/schemas/SessionProtocol'
+        details:
+          oneOf:
+            - $ref: '#/components/schemas/ResponseTCPStreamingSingleplexSessionDetails'
+            - $ref: '#/components/schemas/ResponseTCPStreamingMultiplexSessionDetails'
+            - $ref: '#/components/schemas/ResponseVlogSessionDetails'
+            - $ref: '#/components/schemas/ResponseIf2SessionDetails'
+            - $ref: '#/components/schemas/ResponseClientTCPStreamingMultiplexSessionDetails'
+          discriminator:
+            propertyName: protocol
+
+    RequestTCPStreamingSingleplexSessionDetails:
+      type: object
+      required:
+        - securityMode
+        - tlcIdentifier
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        tlcIdentifier:
+          type: string
+          pattern: '^[a-z0-9]{8}$'
+          description: TLC identifier (8 chars, lowercase)
+
+    RequestTCPStreamingMultiplexSessionDetails:
+      type: object
+      required:
+        - securityMode
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-z0-9]{8}$'
+          description: TLC identifiers (8 chars each, lowercase)
+
+    RequestVlogSessionDetails:
+      type: object
+      required:
+        - tlcIdentifier
+      properties:
+        host:
+          type: string
+          description: VLOG host address
+        port:
+          type: integer
+          minimum: 1
+          maximum: 65535
+          description: VLOG port
+        tlcIdentifier:
+          type: string
+          pattern: '^[a-z0-9]{8}$'
+          description: TLC identifier (8 chars, lowercase)
+        itf:
+          type: string
+          description: ITF configuration
+        clockDifferenceThresholdMilliSeconds:
+          type: integer
+          description: Clock difference threshold in milliseconds
+
+    RequestIf2SessionDetails:
+      type: object
+      properties:
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-z0-9]{8}$'
+          description: TLC identifiers (8 chars each, lowercase)
+
+    RequestClientTCPStreamingMultiplexSessionDetails:
+      type: object
+      required:
+        - securityMode
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-z0-9]{8}$'
+          description: TLC identifiers (8 chars each, lowercase)
+
+    # Connection initiation details for session responses
+    ResponseSessionDetailsConnectionInitiation:
+      type: object
+      properties:
+        host:
+          type: string
+          description: Connection host address
+        port:
+          type: integer
+          minimum: 1
+          maximum: 65535
+          description: Connection port number
+        expiration:
+          type: string
+          format: date-time
+          description: Connection expiration timestamp (ISO8601)
+
+    ResponseTCPStreamingSingleplexSessionDetails:
+      type: object
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        keepAliveTimeout:
+          type: string
+          description: Keep alive timeout (ISO8601 duration format)
+        payloadRateLimit:
+          type: integer
+          description: Rate limit per second
+        payloadRateLimitDuration:
+          type: string
+          description: Rate limit duration (ISO8601 duration format)
+        payloadThroughputLimit:
+          type: integer
+          description: Throughput limit in KB per second
+        payloadThroughputLimitDuration:
+          type: string
+          description: Throughput limit duration (ISO8601 duration format)
+        clockDiffLimit:
+          type: string
+          description: Clock difference threshold (ISO8601 duration format)
+        clockDiffLimitDuration:
+          type: string
+          description: Clock sample window (ISO8601 duration format)
+        listener:
+          $ref: '#/components/schemas/ResponseSessionDetailsConnectionInitiation'
+        tlcIdentifier:
+          type: string
+          description: TLC identifier
+
+    ResponseTCPStreamingMultiplexSessionDetails:
+      type: object
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        keepAliveTimeout:
+          type: string
+          description: Keep alive timeout (ISO8601 duration format)
+        payloadRateLimit:
+          type: integer
+          description: Rate limit per second
+        payloadRateLimitDuration:
+          type: string
+          description: Rate limit duration (ISO8601 duration format)
+        payloadThroughputLimit:
+          type: integer
+          description: Throughput limit in KB per second
+        payloadThroughputLimitDuration:
+          type: string
+          description: Throughput limit duration (ISO8601 duration format)
+        clockDiffLimit:
+          type: string
+          description: Clock difference threshold (ISO8601 duration format)
+        clockDiffLimitDuration:
+          type: string
+          description: Clock sample window (ISO8601 duration format)
+        listener:
+          $ref: '#/components/schemas/ResponseSessionDetailsConnectionInitiation'
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+          description: TLC identifiers
+
+    ResponseVlogSessionDetails:
+      type: object
+      properties:
+        remote:
+          $ref: '#/components/schemas/ResponseSessionDetailsConnectionInitiation'
+        tlcIdentifier:
+          type: string
+          description: TLC identifier
+        itf:
+          type: string
+          description: ITF configuration
+        payloadRateLimit:
+          type: integer
+          description: Rate limit per second
+        payloadRateLimitDuration:
+          type: string
+          description: Rate limit duration (ISO8601 duration format)
+        payloadThroughputLimit:
+          type: integer
+          description: Throughput limit in KB per second
+        payloadThroughputLimitDuration:
+          type: string
+          description: Throughput limit duration (ISO8601 duration format)
+        clockDiffLimit:
+          type: string
+          nullable: true
+          description: Clock difference threshold (ISO8601 duration format, nullable)
+
+    ResponseIf2SessionDetails:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          description: Connection URI
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+          description: TLC identifiers
+
+    ResponseClientTCPStreamingMultiplexSessionDetails:
+      type: object
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        keepAliveTimeout:
+          type: string
+          description: Keep alive timeout (ISO8601 duration format)
+        payloadRateLimit:
+          type: integer
+          description: Rate limit per second
+        payloadRateLimitDuration:
+          type: string
+          description: Rate limit duration (ISO8601 duration format)
+        payloadThroughputLimit:
+          type: integer
+          description: Throughput limit in KB per second
+        payloadThroughputLimitDuration:
+          type: string
+          description: Throughput limit duration (ISO8601 duration format)
+        clockDiffLimit:
+          type: string
+          description: Clock difference threshold (ISO8601 duration format)
+        clockDiffLimitDuration:
+          type: string
+          description: Clock sample window (ISO8601 duration format)
+        uri:
+          type: string
+          format: uri
+          description: Connection URI
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+          description: TLC identifiers
+
+    # Session Log schemas
+    ResponseSessionLog:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Session token
+        domain:
+          type: string
+        account:
+          type: string
+        type:
+          type: string
+        protocol:
+          type: string
+        details:
+          type: string
+          description: Session details as JSON string
+        created:
+          type: integer
+          format: int64
+          description: Creation timestamp (Unix epoch milliseconds)
+        connected:
+          type: integer
+          format: int64
+          description: Connection timestamp (Unix epoch milliseconds)
+        remoteAddress:
+          type: string
+          description: Remote IP address
+        ended:
+          type: integer
+          format: int64
+          description: End timestamp (Unix epoch milliseconds)
+        endReason:
+          type: string
+          description: Reason for session termination
+        tlcScopeHistory:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponseSessionTlcLog'
+
+    ResponseSessionTlcLog:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+          description: Event timestamp (Unix epoch milliseconds)
+        scope:
+          type: string
+          description: TLC scope
+        tlcIdentifier:
+          type: string
+          description: TLC identifier
+
+    # Session Template schemas
+    RequestSessionTemplate:
+      type: object
+      required:
+        - domain
+        - authorization
+        - type
+        - protocol
+        - details
+      properties:
+        domain:
+          type: string
+          minLength: 1
+          description: Domain name (converted to lowercase)
+        authorization:
+          type: string
+          format: uuid
+          description: Authorization UUID
+        autoConnect:
+          type: boolean
+          default: false
+          description: Auto-connect on creation
+        type:
+          $ref: '#/components/schemas/SessionType'
+        protocol:
+          $ref: '#/components/schemas/SessionProtocol'
+        details:
+          oneOf:
+            - $ref: '#/components/schemas/RequestSessionTemplateIf2Details'
+            - $ref: '#/components/schemas/RequestSessionTemplateClientTcpStreamingDetails'
+          discriminator:
+            propertyName: protocol
+
+    ResponseSessionTemplate:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        domain:
+          type: string
+        authorization:
+          type: string
+          format: uuid
+        autoConnect:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/SessionType'
+        protocol:
+          $ref: '#/components/schemas/SessionProtocol'
+        details:
+          oneOf:
+            - $ref: '#/components/schemas/ResponseSessionTemplateIf2Details'
+            - $ref: '#/components/schemas/ResponseSessionTemplateClientTcpStreamingDetails'
+          discriminator:
+            propertyName: protocol
+
+    RequestSessionTemplateIf2Details:
+      type: object
+      properties:
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-z0-9]{8}$'
+          description: TLC identifiers (8 chars each, lowercase)
+
+    RequestSessionTemplateClientTcpStreamingDetails:
+      type: object
+      required:
+        - securityMode
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+            pattern: '^[a-z0-9]{8}$'
+          description: TLC identifiers (8 chars each, lowercase)
+
+    ResponseSessionTemplateIf2Details:
+      type: object
+      properties:
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string
+
+    ResponseSessionTemplateClientTcpStreamingDetails:
+      type: object
+      properties:
+        securityMode:
+          $ref: '#/components/schemas/SecurityMode'
+        tlcIdentifiers:
+          type: array
+          items:
+            type: string

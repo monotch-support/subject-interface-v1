@@ -1,0 +1,1884 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monotch-support.github.io/subject-interface-v1/api-endpoints/session-logging/">
+      
+      
+        <link rel="prev" href="../session-management/">
+      
+      
+        <link rel="next" href="../tlc-registration/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Session Logging - Subject Interface v1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/width.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/neoteroi-css-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-logging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Subject Interface v1" class="md-header__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Subject Interface v1
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session Logging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monotch-support/subject-interface-v1" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+  
+  Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  REST API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tcp-streaming-protocol/" class="md-tabs__link">
+          
+  
+  
+  TCP Streaming Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Example
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Subject Interface v1" class="md-nav__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Subject Interface v1
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monotch-support/subject-interface-v1" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/evolution-terminology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Evolution & Terminology
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/role-based-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Role-Based Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/real-world-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-World Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/architecture-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Layers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/interface-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interface Components
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/communication-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Communication Scenarios
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/role-based-access-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Role-Based Access Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/authorization-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authorization Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/token-based-authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Token-Based Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/tcp-streaming-security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TCP Streaming Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    REST API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    REST API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Session Logging
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Session Logging
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-session-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Session Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-specific-session-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve Specific Session Log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-log-data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Log Data Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Session Log Data Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-session-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Session Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlc-scope-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLC Scope History
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-range-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Range Queries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Range Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-range-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Range Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-time-range-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Time Range Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytics-and-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics and Reporting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operational-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operational Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Retention
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Responses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-and-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Privacy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tlc-registration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLC Registration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authorization Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization-token-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authorization Token Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    TCP Streaming Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            TCP Streaming Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tcp-streaming-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TCP Streaming Protocol
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tcp-streaming-protocol/protocol-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protocol Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tcp-streaming-protocol/communication-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Communication Modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tcp-streaming-protocol/datagram-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Datagram Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tcp-streaming-protocol/connection-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connection Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-session-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Session Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-specific-session-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retrieve Specific Session Log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-log-data-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Log Data Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Session Log Data Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-session-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Session Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlc-scope-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLC Scope History
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-range-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Range Queries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Range Queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-range-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Range Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-time-range-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Time Range Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytics-and-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analytics and Reporting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operational-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operational Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Retention
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Responses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-and-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security and Privacy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="session-logging">Session Logging</h1>
+<p>Session logging endpoints provide access to historical session information and operational data for monitoring and analysis purposes. These endpoints support troubleshooting, operational analysis, and compliance reporting.</p>
+<h2 id="overview">Overview</h2>
+<p>Session logging allows you to:</p>
+<ul>
+<li>Retrieve historical session logs within specified time ranges</li>
+<li>Get detailed information about specific session instances</li>
+<li>Analyze session performance and operational metrics</li>
+<li>Monitor session patterns and usage trends</li>
+</ul>
+<p>All log data is automatically filtered based on your API key's authorization context.</p>
+<h2 id="available-operations">Available Operations</h2>
+<h3 id="list-session-logs">List Session Logs</h3>
+<p><strong><code>GET /v1/sessionlogs</code></strong></p>
+<p>Retrieve session logs within a specified time range with automatic filtering based on your API key's authorization context.</p>
+<p><strong>Required Roles:</strong> TLC Admin/Analyst, Broker Admin/Analyst, Monitor Admin/System</p>
+<p><strong>Required Query Parameters:</strong></p>
+<ul>
+<li><code>from</code> - Start time in ISO8601 format (e.g., "2024-01-15T00:00:00Z")</li>
+<li><code>until</code> - End time in ISO8601 format (e.g., "2024-01-15T23:59:59Z")</li>
+</ul>
+<p><strong>Response:</strong> Array of session log objects with complete session history and metrics.</p>
+<p><strong>Example Request:</strong>
+<div class="highlight"><pre><span></span><code>GET /v1/sessionlogs?from=2024-01-15T00:00:00Z&amp;until=2024-01-15T23:59:59Z
+</code></pre></div></p>
+<h3 id="retrieve-specific-session-log">Retrieve Specific Session Log</h3>
+<p><strong><code>GET /v1/sessionlogs/{token}</code></strong></p>
+<p>Get detailed information about a specific session's complete lifecycle and performance data.</p>
+<p><strong>Required Roles:</strong> TLC Admin/Analyst, Broker Admin/Analyst, Monitor Admin/System</p>
+<p><strong>Response:</strong> Single session log object with details including:</p>
+<ul>
+<li>Session configuration and parameters</li>
+<li>Complete timeline of session events</li>
+<li>Performance metrics and statistics</li>
+<li>TLC scope history and changes</li>
+<li>Connection and termination details</li>
+</ul>
+<h2 id="session-log-data-structure">Session Log Data Structure</h2>
+<p>Session logs contain information about each session's lifecycle:</p>
+<h3 id="basic-session-information">Basic Session Information</h3>
+<ul>
+<li><strong>Token:</strong> Unique session identifier</li>
+<li><strong>Domain:</strong> Session domain context</li>
+<li><strong>Account:</strong> Associated account identifier  </li>
+<li><strong>Type:</strong> Session type (TLC, Broker, Monitor)</li>
+<li><strong>Protocol:</strong> Communication protocol used</li>
+<li><strong>Details:</strong> Session-specific configuration (stored as JSON string)</li>
+</ul>
+<h3 id="temporal-data">Temporal Data</h3>
+<ul>
+<li><strong>Created:</strong> Session creation timestamp (Unix epoch milliseconds)</li>
+<li><strong>Connected:</strong> First successful connection timestamp (Unix epoch milliseconds)</li>
+<li><strong>Ended:</strong> Session termination timestamp (Unix epoch milliseconds)</li>
+<li><strong>End Reason:</strong> Reason for session termination</li>
+</ul>
+<h3 id="network-information">Network Information</h3>
+<ul>
+<li><strong>Remote Address:</strong> Client IP address that connected to the session</li>
+</ul>
+<h3 id="tlc-scope-history">TLC Scope History</h3>
+<p>For sessions with dynamic TLC scope, logs include:</p>
+<ul>
+<li><strong>Timestamp:</strong> When scope change occurred (Unix epoch milliseconds)</li>
+<li><strong>Scope:</strong> The scope level at that time</li>
+<li><strong>TLC Identifier:</strong> Specific TLC identifier affected</li>
+</ul>
+<h2 id="time-range-queries">Time Range Queries</h2>
+<h3 id="query-parameters">Query Parameters</h3>
+<p>Both <code>from</code> and <code>until</code> parameters are required and must be in ISO8601 format:</p>
+<div class="highlight"><pre><span></span><code>GET /v1/sessionlogs?from=2024-01-15T08:00:00Z&amp;until=2024-01-15T18:00:00Z
+</code></pre></div>
+<h3 id="time-range-guidelines">Time Range Guidelines</h3>
+<ul>
+<li><strong>Maximum Range:</strong> Query time ranges should be reasonable to avoid performance issues</li>
+<li><strong>Time Zone:</strong> Always use UTC (Z suffix) for consistent results</li>
+<li><strong>Precision:</strong> Timestamps support millisecond precision</li>
+<li><strong>Inclusivity:</strong> Time ranges are inclusive of both start and end times</li>
+</ul>
+<h3 id="example-time-range-patterns">Example Time Range Patterns</h3>
+<p><strong>Single Day:</strong>
+<div class="highlight"><pre><span></span><code>from=2024-01-15T00:00:00Z&amp;until=2024-01-15T23:59:59Z
+</code></pre></div></p>
+<p><strong>Business Hours:</strong>
+<div class="highlight"><pre><span></span><code>from=2024-01-15T08:00:00Z&amp;until=2024-01-15T18:00:00Z
+</code></pre></div></p>
+<p><strong>Last Hour:</strong>
+<div class="highlight"><pre><span></span><code>from=2024-01-15T14:00:00Z&amp;until=2024-01-15T15:00:00Z
+</code></pre></div></p>
+<h2 id="use-cases">Use Cases</h2>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>Session logs help diagnose issues:</p>
+<ul>
+<li><strong>Connection Problems:</strong> Review connection and termination patterns</li>
+<li><strong>Performance Issues:</strong> Analyze session duration and end reasons</li>
+<li><strong>Configuration Issues:</strong> Examine session details and TLC scope changes</li>
+<li><strong>Network Issues:</strong> Investigate remote address patterns and connection timing</li>
+</ul>
+<h3 id="analytics-and-reporting">Analytics and Reporting</h3>
+<p>Generate insights from historical data:</p>
+<ul>
+<li><strong>Usage Patterns:</strong> Identify peak usage times and session frequency</li>
+<li><strong>Performance Trends:</strong> Track session success rates and duration patterns</li>
+<li><strong>Resource Utilization:</strong> Monitor TLC usage across different sessions</li>
+<li><strong>Compliance Reporting:</strong> Generate audit trails for regulatory requirements</li>
+</ul>
+<h3 id="operational-monitoring">Operational Monitoring</h3>
+<p>Monitor system health and performance:</p>
+<ul>
+<li><strong>Session Success Rates:</strong> Track ratio of successful to failed sessions</li>
+<li><strong>Duration Analysis:</strong> Identify unusually long or short sessions</li>
+<li><strong>Error Pattern Detection:</strong> Spot recurring termination reasons</li>
+<li><strong>Capacity Planning:</strong> Understand session load patterns</li>
+</ul>
+<h2 id="data-retention">Data Retention</h2>
+<p>Session log data retention policies:</p>
+<ul>
+<li><strong>Availability:</strong> Logs are available for a defined retention period</li>
+<li><strong>Coverage:</strong> All session lifecycle events are captured</li>
+<li><strong>Performance:</strong> Recent logs have faster query performance</li>
+<li><strong>Archival:</strong> Older logs may be archived with longer retrieval times</li>
+</ul>
+<h2 id="error-responses">Error Responses</h2>
+<p>Common error scenarios:</p>
+<ul>
+<li><strong>400 Bad Request</strong> - Invalid time range format or missing required parameters</li>
+<li><strong>401 Unauthorized</strong> - Invalid or missing authorization token</li>
+<li><strong>403 Forbidden</strong> - Insufficient permissions for log access</li>
+<li><strong>404 Not Found</strong> - Session token not found or not accessible within your context</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="query-optimization">Query Optimization</h3>
+<ul>
+<li><strong>Reasonable Time Ranges:</strong> Avoid excessively large time ranges that may impact performance</li>
+<li><strong>Specific Filtering:</strong> Use the most specific time ranges possible for your use case</li>
+<li><strong>Pagination Awareness:</strong> Consider implementing pagination for large result sets</li>
+<li><strong>Error Handling:</strong> Implement proper retry logic for network or service issues</li>
+</ul>
+<h3 id="data-analysis">Data Analysis</h3>
+<ul>
+<li><strong>Trend Analysis:</strong> Look for patterns over time rather than single events</li>
+<li><strong>Correlation Analysis:</strong> Compare logs with external events for root cause analysis</li>
+<li><strong>Baseline Establishment:</strong> Understand normal patterns to identify anomalies</li>
+<li><strong>Regular Review:</strong> Establish regular log review processes for proactive monitoring</li>
+</ul>
+<h3 id="security-and-privacy">Security and Privacy</h3>
+<ul>
+<li><strong>Access Control:</strong> Ensure log access is limited to authorized personnel</li>
+<li><strong>Data Sensitivity:</strong> Be aware that logs may contain sensitive operational information  </li>
+<li><strong>Audit Trail:</strong> Maintain records of who accessed logs and when</li>
+<li><strong>Data Export:</strong> Follow organizational policies for log data export and storage</li>
+</ul>
+<p>For complete API specifications and interactive testing, see the <a href="../../api-reference/">API Reference</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+  
+    | Document version 0.1.0
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.1.0"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
