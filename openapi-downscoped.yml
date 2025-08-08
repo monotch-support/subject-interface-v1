@@ -933,8 +933,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars, lowercase alphanumeric, underscore, hyphen)
 
     ResponseAuthorization:
       type: object
@@ -988,8 +988,8 @@ components:
       properties:
         identifier:
           type: string
-          pattern: '^[a-z0-9]{8}$'
-          description: TLC identifier (8 chars, lowercase)
+          pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifier (8 chars, lowercase alphanumeric, underscore, hyphen)
 
     ResponseTlc:
       type: object
@@ -1061,8 +1061,8 @@ components:
           $ref: '#/components/schemas/SecurityMode'
         tlcIdentifier:
           type: string
-          pattern: '^[a-z0-9]{8}$'
-          description: TLC identifier (8 chars, lowercase)
+          pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifier (8 chars, lowercase alphanumeric, underscore, hyphen)
 
     RequestTCPStreamingMultiplexSessionDetails:
       type: object
@@ -1075,8 +1075,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars each, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars each, lowercase alphanumeric, underscore, hyphen)
 
 
     # Connection initiation details for session responses

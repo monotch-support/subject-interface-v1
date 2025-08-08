@@ -1,0 +1,3081 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://monotch-support.github.io/subject-interface-v1/api-endpoints/reference/endpoints-reference/">
+      
+      
+        <link rel="prev" href="../../getting-started/common-workflows/">
+      
+      
+        <link rel="next" href="../role-permissions/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>API Endpoints Reference - Subject Interface v1</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/width.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-css-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-endpoints-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Subject Interface v1" class="md-header__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Subject Interface v1
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API Endpoints Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/monotch-support/subject-interface-v1" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  REST API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tcp-streaming-protocol/" class="md-tabs__link">
+          
+  
+  
+  TCP Streaming Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../examples/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Example
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appendix/evolution-terminology/" class="md-tabs__link">
+          
+  
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Subject Interface v1" class="md-nav__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Subject Interface v1
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/monotch-support/subject-interface-v1" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../introduction/communication-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Communication Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dual-Layer Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/core-concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/security-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    REST API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            REST API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/common-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Common Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints Reference
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints Reference
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sessions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Sessions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Session Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-session-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Session Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-session-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Session Log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlcs-subjects" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLCs (Subjects)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TLCs (Subjects)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-tlcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      List TLCs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-tlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create TLC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-tlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get TLC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-tlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete TLC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authorizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-authorizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Authorizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Authorization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorization-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authorization Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Token
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../role-permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endpoint Permissions Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenAPI specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    TCP Streaming Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            TCP Streaming Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp-streaming-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp-streaming-protocol/protocol-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protocol Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp-streaming-protocol/communication-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Communication Modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp-streaming-protocol/datagram-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Datagram Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp-streaming-protocol/connection-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connection Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tcp-streaming-protocol/protocol-enforcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protocol Enforcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../appendix/evolution-terminology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terminology Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sessions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sessions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Sessions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Session
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Logs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Session Logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-session-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Session Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-session-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Session Log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tlcs-subjects" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLCs (Subjects)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TLCs (Subjects)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-tlcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      List TLCs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-tlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create TLC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-tlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get TLC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-tlc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete TLC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authorizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-authorizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Authorizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Authorization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Authorization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorization-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authorization Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Token
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="api-endpoints-reference">API Endpoints Reference</h1>
+<p>Complete reference for all Subject Interface REST API endpoints with request/response examples and field definitions.</p>
+<h2 id="data-types">Data Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>string</strong></td>
+<td>Text value</td>
+<td><code>"example-value"</code></td>
+</tr>
+<tr>
+<td><strong>number</strong></td>
+<td>Numeric value</td>
+<td><code>8443</code></td>
+</tr>
+<tr>
+<td><strong>boolean</strong></td>
+<td>True/false value</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><strong>array</strong></td>
+<td>List of values</td>
+<td><code>["value1", "value2"]</code></td>
+</tr>
+<tr>
+<td><strong>object</strong></td>
+<td>JSON object</td>
+<td><code>{"key": "value"}</code></td>
+</tr>
+<tr>
+<td><strong>enum</strong></td>
+<td>Fixed set of values</td>
+<td><code>"TLC"</code> (from <code>TLC</code>, <code>Broker</code>, <code>Monitor</code>)</td>
+</tr>
+<tr>
+<td><strong>timestamp</strong></td>
+<td>Unix epoch milliseconds</td>
+<td><code>1640995200000</code></td>
+</tr>
+<tr>
+<td><strong>iso8601</strong></td>
+<td>ISO 8601 datetime string</td>
+<td><code>"2024-01-15T10:30:00Z"</code></td>
+</tr>
+<tr>
+<td><strong>uuid</strong></td>
+<td>UUID identifier</td>
+<td><code>"550e8400-e29b-41d4-a716-446655440000"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="authentication">Authentication</h2>
+<p><strong>Header:</strong> <code>X-Authorization: your-token-value</code></p>
+<p><strong>Required for:</strong> All endpoints except public documentation</p>
+<h2 id="sessions">Sessions</h2>
+<h3 id="list-sessions">List Sessions</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/sessions</span>
+<span class="err">GET /v1/sessions?type=TLC</span>
+<span class="err">GET /v1/sessions?protocol=TCPStreaming_Multiplex</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin/System</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Valid Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>No</td>
+<td>Filter by session type</td>
+<td><code>TLC</code>, <code>Broker</code>, <code>Monitor</code></td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>enum</td>
+<td>No</td>
+<td>Filter by protocol</td>
+<td><code>TCPStreaming_Singleplex</code>, <code>TCPStreaming_Multiplex</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Array of session objects</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-domain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;session-token-123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCPStreaming_Singleplex&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;securityMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLSv1.2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;listener&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;streaming.example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8443</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-15T10:30:00Z&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;tlcIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device01&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Response Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain</code></td>
+<td>string</td>
+<td>Domain context</td>
+<td>Matches token's domain</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Session type</td>
+<td><code>TLC</code>, <code>Broker</code>, or <code>Monitor</code></td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>Unique session identifier</td>
+<td>System-generated</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>enum</td>
+<td>Communication protocol</td>
+<td><code>TCPStreaming_Singleplex</code> or <code>TCPStreaming_Multiplex</code></td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>object</td>
+<td>Session configuration and limits</td>
+<td>Contains operational parameters</td>
+</tr>
+<tr>
+<td><code>details.securityMode</code></td>
+<td>enum</td>
+<td>Encryption mode</td>
+<td><code>NONE</code> or <code>TLSv1.2</code></td>
+</tr>
+<tr>
+<td><code>details.keepAliveTimeout</code></td>
+<td>iso8601</td>
+<td>Maximum idle time before connection timeout</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#connection-timeout-enforcement">Connection Timeout Enforcement</a></td>
+</tr>
+<tr>
+<td><code>details.payloadRateLimit</code></td>
+<td>number</td>
+<td>Maximum payload messages per duration</td>
+<td>Rate limiting for message frequency. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#payload-rate-limiting">Payload Rate Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.payloadRateLimitDuration</code></td>
+<td>iso8601</td>
+<td>Time window for rate limit</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#payload-rate-limiting">Payload Rate Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.payloadThroughputLimit</code></td>
+<td>number</td>
+<td>Maximum bytes per duration</td>
+<td>Bandwidth limiting in bytes. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#throughput-limiting">Throughput Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.payloadThroughputLimitDuration</code></td>
+<td>iso8601</td>
+<td>Time window for throughput limit</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#throughput-limiting">Throughput Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.clockDiffLimit</code></td>
+<td>iso8601</td>
+<td>Maximum allowed clock difference</td>
+<td>Time synchronization tolerance. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#clock-synchronization-enforcement">Clock Sync Enforcement</a></td>
+</tr>
+<tr>
+<td><code>details.clockDiffLimitDuration</code></td>
+<td>iso8601</td>
+<td>Clock difference measurement window</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#clock-synchronization-enforcement">Clock Sync Enforcement</a></td>
+</tr>
+<tr>
+<td><code>details.listener</code></td>
+<td>object</td>
+<td>Connection details</td>
+<td>Present in responses only</td>
+</tr>
+<tr>
+<td><code>details.listener.host</code></td>
+<td>string</td>
+<td>Streaming server hostname</td>
+<td>System-determined</td>
+</tr>
+<tr>
+<td><code>details.listener.port</code></td>
+<td>number</td>
+<td>TCP port number</td>
+<td>Range: 1024-65535</td>
+</tr>
+<tr>
+<td><code>details.listener.expiration</code></td>
+<td>iso8601</td>
+<td>Session expiration time</td>
+<td>ISO 8601 with Z suffix</td>
+</tr>
+<tr>
+<td><code>details.tlcIdentifier</code></td>
+<td>string</td>
+<td>Single TLC identifier</td>
+<td>For singleplex sessions only</td>
+</tr>
+<tr>
+<td><code>details.tlcIdentifiers</code></td>
+<td>array</td>
+<td>Multiple TLC identifiers</td>
+<td>For multiplex sessions only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="create-session">Create Session</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST /v1/sessions</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin/System</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-domain&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC\|Broker\|Monitor&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCPStreaming_Singleplex|TCPStreaming_Multiplex&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;securityMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NONE|TLSv1.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tlcIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device01&quot;</span><span class="p">,</span><span class="w">          </span><span class="c1">// Singleplex only</span>
+<span class="w">    </span><span class="nt">&quot;tlcIdentifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sub00001&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sub00002&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1">// Multiplex only</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Domain context</td>
+<td>Must match token's domain</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Session type</td>
+<td><code>TLC</code>, <code>Broker</code>, or <code>Monitor</code></td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Communication protocol</td>
+<td><code>TCPStreaming_Singleplex</code> or <code>TCPStreaming_Multiplex</code></td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Session configuration</td>
+<td>Structure varies by protocol</td>
+</tr>
+<tr>
+<td><code>details.securityMode</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Encryption mode</td>
+<td><code>NONE</code> or <code>TLSv1.2</code></td>
+</tr>
+<tr>
+<td><code>details.tlcIdentifier</code></td>
+<td>string</td>
+<td>Conditional</td>
+<td>Single TLC identifier</td>
+<td>Required for singleplex, 8 chars, lowercase alphanumeric, underscore, hyphen</td>
+</tr>
+<tr>
+<td><code>details.tlcIdentifiers</code></td>
+<td>array</td>
+<td>Conditional</td>
+<td>Multiple TLC identifiers</td>
+<td>Required for multiplex, 1-100 items</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Session object with connection details (same structure as List Sessions)</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev_001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;session-token-abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCPStreaming_Singleplex&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;securityMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLSv1.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;keepAliveTimeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT10S&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;payloadRateLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;payloadRateLimitDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT5S&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;payloadThroughputLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;payloadThroughputLimitDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT5S&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clockDiffLimit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT3S&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;clockDiffLimitDuration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PT1M&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;listener&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;streaming.example.com&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8443</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;expiration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-15T10:30:00Z&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;tlcIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sub00001&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Response Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain</code></td>
+<td>string</td>
+<td>Domain context</td>
+<td>Matches request domain</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Session type</td>
+<td><code>TLC</code>, <code>Broker</code>, or <code>Monitor</code></td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>Unique session identifier</td>
+<td>System-generated, used for streaming connection</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>enum</td>
+<td>Communication protocol</td>
+<td><code>TCPStreaming_Singleplex</code> or <code>TCPStreaming_Multiplex</code></td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>object</td>
+<td>Session configuration and limits</td>
+<td>Contains operational parameters</td>
+</tr>
+<tr>
+<td><code>details.securityMode</code></td>
+<td>enum</td>
+<td>Encryption mode</td>
+<td><code>NONE</code> or <code>TLSv1.2</code></td>
+</tr>
+<tr>
+<td><code>details.keepAliveTimeout</code></td>
+<td>iso8601</td>
+<td>Maximum idle time before connection timeout</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#connection-timeout-enforcement">Connection Timeout Enforcement</a></td>
+</tr>
+<tr>
+<td><code>details.payloadRateLimit</code></td>
+<td>number</td>
+<td>Maximum payload messages per duration</td>
+<td>Rate limiting for message frequency. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#payload-rate-limiting">Payload Rate Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.payloadRateLimitDuration</code></td>
+<td>iso8601</td>
+<td>Time window for rate limit</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#payload-rate-limiting">Payload Rate Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.payloadThroughputLimit</code></td>
+<td>number</td>
+<td>Maximum bytes per duration</td>
+<td>Bandwidth limiting in bytes. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#throughput-limiting">Throughput Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.payloadThroughputLimitDuration</code></td>
+<td>iso8601</td>
+<td>Time window for throughput limit</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#throughput-limiting">Throughput Limiting</a></td>
+</tr>
+<tr>
+<td><code>details.clockDiffLimit</code></td>
+<td>iso8601</td>
+<td>Maximum allowed clock difference</td>
+<td>Time synchronization tolerance. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#clock-synchronization-enforcement">Clock Sync Enforcement</a></td>
+</tr>
+<tr>
+<td><code>details.clockDiffLimitDuration</code></td>
+<td>iso8601</td>
+<td>Clock difference measurement window</td>
+<td>ISO 8601 duration format. See <a href="../../../tcp-streaming-protocol/protocol-enforcement/#clock-synchronization-enforcement">Clock Sync Enforcement</a></td>
+</tr>
+<tr>
+<td><code>details.listener</code></td>
+<td>object</td>
+<td>Connection details</td>
+<td>Streaming endpoint information</td>
+</tr>
+<tr>
+<td><code>details.listener.host</code></td>
+<td>string</td>
+<td>Streaming server hostname</td>
+<td>System-determined endpoint</td>
+</tr>
+<tr>
+<td><code>details.listener.port</code></td>
+<td>number</td>
+<td>TCP port number</td>
+<td>Range: 1024-65535</td>
+</tr>
+<tr>
+<td><code>details.listener.expiration</code></td>
+<td>iso8601</td>
+<td>Session expiration time</td>
+<td>ISO 8601 with Z suffix</td>
+</tr>
+<tr>
+<td><code>details.tlcIdentifier</code></td>
+<td>string</td>
+<td>Single TLC identifier</td>
+<td>For singleplex sessions only</td>
+</tr>
+<tr>
+<td><code>details.tlcIdentifiers</code></td>
+<td>array</td>
+<td>Multiple TLC identifiers</td>
+<td>For multiplex sessions only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-session">Get Session</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/sessions/{token}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin/System</p>
+<p><strong>Path Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Session token</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Single session object (same structure as List Sessions)</p>
+<h3 id="update-session">Update Session</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT /v1/sessions/{token}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin/System</p>
+<p><strong>Note:</strong> Multiplex sessions only</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;securityMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLSv1.2&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Must match existing</span>
+<span class="w">  </span><span class="nt">&quot;tlcIdentifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sub00001&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sub00002&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sub00003&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>securityMode</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Encryption mode</td>
+<td>Must match existing session</td>
+</tr>
+<tr>
+<td><code>tlcIdentifiers</code></td>
+<td>array</td>
+<td>Yes</td>
+<td>Updated TLC list</td>
+<td>1-100 valid TLC identifiers</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-session">Delete Session</h3>
+<div class="highlight"><pre><span></span><code><span class="err">DELETE /v1/sessions/{token}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Response:</strong> 204 No Content</p>
+<h2 id="session-logs">Session Logs</h2>
+<h3 id="list-session-logs">List Session Logs</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/sessionlogs?from=2024-01-15T00:00:00Z&amp;until=2024-01-15T23:59:59Z</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker Admin/Analyst, Monitor Admin/System</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>from</code></td>
+<td>iso8601</td>
+<td>Yes</td>
+<td>Start time</td>
+<td>ISO 8601 with Z suffix</td>
+</tr>
+<tr>
+<td><code>until</code></td>
+<td>iso8601</td>
+<td>Yes</td>
+<td>End time</td>
+<td>ISO 8601 with Z suffix</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Array of session log objects</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;session-token-123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-domain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-account&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCPStreaming_Singleplex&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;securityMode\&quot;:\&quot;TLSv1.2\&quot;,\&quot;tlcIdentifier\&quot;:\&quot;device01\&quot;}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1640995200000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1640995205000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ended&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1640998800000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;endReason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CLIENT_DISCONNECT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;remoteAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.1.100&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Response Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Session token</td>
+<td>Unique identifier</td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Domain context</td>
+<td>Domain name</td>
+</tr>
+<tr>
+<td><code>account</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Account identifier</td>
+<td>Account name</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Session type</td>
+<td><code>TLC</code>, <code>Broker</code>, or <code>Monitor</code></td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Protocol used</td>
+<td><code>TCPStreaming_Singleplex</code> or <code>TCPStreaming_Multiplex</code></td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>JSON-encoded session details</td>
+<td>Serialized configuration</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td>timestamp</td>
+<td>Yes</td>
+<td>Session creation time</td>
+<td>Unix epoch milliseconds</td>
+</tr>
+<tr>
+<td><code>connected</code></td>
+<td>timestamp</td>
+<td>No</td>
+<td>First connection time</td>
+<td>Unix epoch milliseconds, null if never connected</td>
+</tr>
+<tr>
+<td><code>ended</code></td>
+<td>timestamp</td>
+<td>No</td>
+<td>Session end time</td>
+<td>Unix epoch milliseconds, null if still active</td>
+</tr>
+<tr>
+<td><code>endReason</code></td>
+<td>string</td>
+<td>No</td>
+<td>Termination reason</td>
+<td>See End Reasons below</td>
+</tr>
+<tr>
+<td><code>remoteAddress</code></td>
+<td>string</td>
+<td>No</td>
+<td>Client IP address</td>
+<td>IPv4/IPv6 address</td>
+</tr>
+</tbody>
+</table>
+<p><strong>End Reasons:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Description</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLIENT_DISCONNECT</code></td>
+<td>Client closed connection</td>
+<td>Normal client-initiated termination</td>
+</tr>
+<tr>
+<td><code>SESSION_EXPIRED</code></td>
+<td>Session reached expiration</td>
+<td>Time-based expiration</td>
+</tr>
+<tr>
+<td><code>ADMIN_TERMINATION</code></td>
+<td>Admin deleted session</td>
+<td>Manual termination via DELETE endpoint</td>
+</tr>
+<tr>
+<td><code>TLC_DELETED</code></td>
+<td>Referenced TLC was deleted</td>
+<td>TLC resource removal</td>
+</tr>
+<tr>
+<td><code>TOKEN_REVOKED</code></td>
+<td>Session token was revoked</td>
+<td>Token management action</td>
+</tr>
+<tr>
+<td><code>CONNECTION_ERROR</code></td>
+<td>Network/TCP error</td>
+<td>Technical connectivity issue</td>
+</tr>
+<tr>
+<td><code>PROTOCOL_ERROR</code></td>
+<td>Streaming protocol violation</td>
+<td>Invalid client behavior</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-session-log">Get Session Log</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/sessionlogs/{token}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker Admin/Analyst, Monitor Admin/System</p>
+<p><strong>Response:</strong> Single session log object (same structure as List Session Logs)</p>
+<h2 id="tlcs-subjects">TLCs (Subjects)</h2>
+<h3 id="list-tlcs">List TLCs</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/tlcs</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC Admin/Analyst, Broker Admin/System/Analyst, Monitor Admin/System</p>
+<p><strong>Response:</strong> Array of TLC objects</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;550e8400-e29b-41d4-a716-446655440000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-domain&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-account&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TCPStreaming&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Response Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uuid</code></td>
+<td>uuid</td>
+<td>Unique TLC identifier</td>
+<td>System-generated UUID</td>
+</tr>
+<tr>
+<td><code>identifier</code></td>
+<td>string</td>
+<td>TLC identifier</td>
+<td>8 chars, pattern: <code>^[a-z0-9_-]{8}$</code></td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td>string</td>
+<td>Domain context</td>
+<td>Inherited from token</td>
+</tr>
+<tr>
+<td><code>account</code></td>
+<td>string</td>
+<td>Account context</td>
+<td>Inherited from token</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>enum</td>
+<td>TLC type</td>
+<td>Currently only <code>TCPStreaming</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="create-tlc">Create TLC</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST /v1/tlcs</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC Admin</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device01&quot;</span><span class="w">  </span><span class="c1">// 8 chars, lowercase alphanumeric, underscore, hyphen</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>identifier</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>TLC identifier</td>
+<td>Exactly 8 chars, pattern: <code>^[a-z0-9_-]{8}$</code>, unique within domain</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TLC Identifier Examples:</strong></p>
+<ul>
+<li><strong>Valid:</strong> <code>sub00001</code>, <code>device01</code>, <code>traffic1</code>, <code>sensor99</code>, <code>ctrl0001</code>, <code>zone12ab</code>, <code>dev_0001</code>, <code>test-001</code>, <code>prod_v01</code></li>
+<li><strong>Invalid:</strong> <code>Device01</code> (uppercase), <code>device1</code> (7 chars), <code>device001</code> (9 chars), <code>dev@001</code> (invalid char)</li>
+</ul>
+<p><strong>Response:</strong> TLC object with generated UUID (same structure as List TLCs)</p>
+<h3 id="get-tlc">Get TLC</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/tlcs/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC Admin/Analyst, Broker Admin/System/Analyst, Monitor Admin/System</p>
+<p><strong>Response:</strong> Single TLC object (same structure as List TLCs)</p>
+<h3 id="delete-tlc">Delete TLC</h3>
+<div class="highlight"><pre><span></span><code><span class="err">DELETE /v1/tlcs/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC Admin</p>
+<p><strong>Response:</strong> 204 No Content</p>
+<p><strong>Note:</strong> Terminates any active sessions using this TLC</p>
+<h2 id="authorizations">Authorizations</h2>
+<h3 id="list-authorizations">List Authorizations</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/authorizations</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Response:</strong> Array of authorization objects</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;660f9500-f39c-52e5-b827-556766551111&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-domain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-account&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC_SYSTEM&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tlcIdentifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;device01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;device02&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Response Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uuid</code></td>
+<td>uuid</td>
+<td>Unique authorization ID</td>
+<td>System-generated UUID</td>
+</tr>
+<tr>
+<td><code>domain</code></td>
+<td>string</td>
+<td>Domain context</td>
+<td>Inherited from token</td>
+</tr>
+<tr>
+<td><code>account</code></td>
+<td>string</td>
+<td>Account context</td>
+<td>Inherited from token</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>enum</td>
+<td>Operational role</td>
+<td>See Role Types below</td>
+</tr>
+<tr>
+<td><code>tlcIdentifiers</code></td>
+<td>array</td>
+<td>TLC scope restriction</td>
+<td>Optional, for TLC roles only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Role Types:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Category</th>
+<th>Level</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TLC_ADMIN</code></td>
+<td>TLC</td>
+<td>Administrative</td>
+<td>TLC management and configuration</td>
+</tr>
+<tr>
+<td><code>TLC_SYSTEM</code></td>
+<td>TLC</td>
+<td>Operational</td>
+<td>Data generation and streaming</td>
+</tr>
+<tr>
+<td><code>TLC_ANALYST</code></td>
+<td>TLC</td>
+<td>Analytical</td>
+<td>Monitoring and analysis</td>
+</tr>
+<tr>
+<td><code>BROKER_ADMIN</code></td>
+<td>BROKER</td>
+<td>Administrative</td>
+<td>Broker service management</td>
+</tr>
+<tr>
+<td><code>BROKER_SYSTEM</code></td>
+<td>BROKER</td>
+<td>Operational</td>
+<td>Data aggregation and distribution</td>
+</tr>
+<tr>
+<td><code>BROKER_ANALYST</code></td>
+<td>BROKER</td>
+<td>Analytical</td>
+<td>Broker performance analysis</td>
+</tr>
+<tr>
+<td><code>MONITOR_ADMIN</code></td>
+<td>MONITOR</td>
+<td>Administrative</td>
+<td>Monitoring service management</td>
+</tr>
+<tr>
+<td><code>MONITOR_SYSTEM</code></td>
+<td>MONITOR</td>
+<td>Operational</td>
+<td>Read-only data consumption</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TLC Scope Rules:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role Category</th>
+<th>Scope Behavior</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TLC Roles</strong></td>
+<td>Optional TLC restriction</td>
+<td>Empty array = domain-wide access</td>
+</tr>
+<tr>
+<td><strong>BROKER Roles</strong></td>
+<td>Always domain-wide</td>
+<td><code>tlcIdentifiers</code> ignored</td>
+</tr>
+<tr>
+<td><strong>MONITOR Roles</strong></td>
+<td>Always domain-wide</td>
+<td><code>tlcIdentifiers</code> ignored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="create-authorization">Create Authorization</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST /v1/authorizations</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC_ADMIN\|TLC_SYSTEM\|TLC_ANALYST\|BROKER_ADMIN\|BROKER_SYSTEM\|BROKER_ANALYST\|MONITOR_ADMIN\|MONITOR_SYSTEM&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tlcIdentifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;device01&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;device02&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1">// Optional, TLC roles only</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>role</code></td>
+<td>enum</td>
+<td>Yes</td>
+<td>Operational role</td>
+<td>Must be valid role from list above</td>
+</tr>
+<tr>
+<td><code>tlcIdentifiers</code></td>
+<td>array</td>
+<td>No</td>
+<td>TLC scope restriction</td>
+<td>Optional for TLC roles, ignored for others</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Authorization object with generated UUID (same structure as List Authorizations)</p>
+<h3 id="get-authorization">Get Authorization</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/authorizations/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Response:</strong> Single authorization object (same structure as List Authorizations)</p>
+<h3 id="update-authorization">Update Authorization</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT /v1/authorizations/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TLC_ANALYST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tlcIdentifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;device01&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong> Same as Create Authorization</p>
+<h3 id="delete-authorization">Delete Authorization</h3>
+<div class="highlight"><pre><span></span><code><span class="err">DELETE /v1/authorizations/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Response:</strong> 204 No Content</p>
+<p><strong>Note:</strong> Automatically revokes all associated tokens</p>
+<h2 id="authorization-tokens">Authorization Tokens</h2>
+<h3 id="list-tokens">List Tokens</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/authorizationtokens</span>
+<span class="err">GET /v1/authorizationtokens?authorization={uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Query Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authorization</code></td>
+<td>uuid</td>
+<td>No</td>
+<td>Filter by authorization UUID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Array of token objects</p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uuid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;770fa600-04ad-63f6-c938-667877662222&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dtNB_vhvJ0wgTGf1N0DxN38_AmTL_4yiPRZdqZSuK3k&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;660f9500-f39c-52e5-b827-556766551111&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p><strong>Response Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uuid</code></td>
+<td>uuid</td>
+<td>Unique token ID</td>
+<td>System-generated UUID</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td>string</td>
+<td>Token value</td>
+<td>Base64url-encoded, cryptographically secure</td>
+</tr>
+<tr>
+<td><code>authorization</code></td>
+<td>uuid</td>
+<td>Associated authorization</td>
+<td>Must be valid authorization UUID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Token Format:</strong></p>
+<ul>
+<li>Base64url-encoded strings</li>
+<li>Cryptographically random</li>
+<li>URL-safe characters only</li>
+<li>No expiration mechanism</li>
+<li>Case-sensitive</li>
+<li>Example: <code>dtNB_vhvJ0wgTGf1N0DxN38_AmTL_4yiPRZdqZSuK3k</code></li>
+</ul>
+<h3 id="create-token">Create Token</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST /v1/authorizationtokens</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;660f9500-f39c-52e5-b827-556766551111&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authorization</code></td>
+<td>uuid</td>
+<td>Yes</td>
+<td>Associated authorization</td>
+<td>Must be valid authorization UUID within domain</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong> Token object with generated token value (same structure as List Tokens)</p>
+<h3 id="get-token">Get Token</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET /v1/authorizationtokens/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Response:</strong> Single token object (same structure as List Tokens)</p>
+<h3 id="update-token">Update Token</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT /v1/authorizationtokens/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Request Body:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-authorization-uuid&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Request Fields:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authorization</code></td>
+<td>uuid</td>
+<td>Yes</td>
+<td>New authorization UUID</td>
+<td>Changes token's permissions and scope</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delete-token">Delete Token</h3>
+<div class="highlight"><pre><span></span><code><span class="err">DELETE /v1/authorizationtokens/{uuid}</span>
+</code></pre></div>
+<p><strong>Required Roles:</strong> TLC/Broker/Monitor Admin</p>
+<p><strong>Response:</strong> 204 No Content</p>
+<p><strong>Note:</strong> Immediately invalidates token for API access</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+  
+    | Document version 0.3.0
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.3.0"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

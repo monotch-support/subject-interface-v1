@@ -8,25 +8,25 @@
       
       
       
-        <link rel="canonical" href="https://monotch-support.github.io/subject-interface-v1/overview/role-based-access-model/">
+        <link rel="canonical" href="https://monotch-support.github.io/subject-interface-v1/architecture/">
       
       
-        <link rel="prev" href="../communication-scenarios/">
+        <link rel="prev" href="../introduction/communication-patterns/">
       
       
-        <link rel="next" href="../authorization-framework/">
+        <link rel="next" href="system-architecture/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Role-Based Access Model - Subject Interface v1</title>
+        <title>Introduction - Subject Interface v1</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
       
       
 
@@ -45,11 +45,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/width.css">
+      <link rel="stylesheet" href="../stylesheets/width.css">
     
-      <link rel="stylesheet" href="../../stylesheets/neoteroi-css-v1.1.2.css">
+      <link rel="stylesheet" href="../stylesheets/neoteroi-css-v1.1.2.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#role-based-access-model" class="md-skip">
+        <a href="#architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Subject Interface v1" class="md-header__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
+    <a href=".." title="Subject Interface v1" class="md-header__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Role-Based Access Model
+              Introduction
             
           </span>
         </div>
@@ -193,11 +193,11 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href=".." class="md-tabs__link">
           
   
   
-  Introduction
+  Home
 
         </a>
       </li>
@@ -215,11 +215,11 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
-  Overview
+  Architecture
 
         </a>
       </li>
@@ -235,7 +235,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../api-endpoints/" class="md-tabs__link">
+        <a href="../api-endpoints/" class="md-tabs__link">
           
   
   
@@ -255,7 +255,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../tcp-streaming-protocol/" class="md-tabs__link">
+        <a href="../tcp-streaming-protocol/" class="md-tabs__link">
           
   
   
@@ -273,7 +273,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../examples/" class="md-tabs__link">
+      <a href="../examples/" class="md-tabs__link">
         
   
   
@@ -283,6 +283,26 @@
 
       </a>
     </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../appendix/evolution-terminology/" class="md-tabs__link">
+          
+  
+  
+  Appendix
+
+        </a>
+      </li>
+    
   
 
       
@@ -308,7 +328,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Subject Interface v1" class="md-nav__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
+    <a href=".." title="Subject Interface v1" class="md-nav__button md-logo" aria-label="Subject Interface v1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -359,7 +379,7 @@
   
   
   <span class="md-ellipsis">
-    Introduction
+    Home
     
   </span>
   
@@ -370,7 +390,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Introduction
+            Home
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -381,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -404,58 +424,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/evolution-terminology/" class="md-nav__link">
+      <a href="../introduction/communication-patterns/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Evolution & Terminology
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../introduction/role-based-architecture/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Role-Based Architecture
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../introduction/real-world-deployment/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Real-World Deployment
+    Communication Patterns
     
   </span>
   
@@ -506,7 +480,7 @@
   
   
   <span class="md-ellipsis">
-    Overview
+    Architecture
     
   </span>
   
@@ -517,101 +491,9 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Overview
+            Architecture
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../architecture-layers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Architecture Layers
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../interface-components/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Interface Components
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../communication-scenarios/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Communication Scenarios
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -634,7 +516,7 @@
   
   
   <span class="md-ellipsis">
-    Role-Based Access Model
+    Introduction
     
   </span>
   
@@ -647,7 +529,7 @@
   
   
   <span class="md-ellipsis">
-    Role-Based Access Model
+    Introduction
     
   </span>
   
@@ -670,18 +552,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#role-categories" class="md-nav__link">
+  <a href="#architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Role Categories
+      Architecture Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#role-structure-overview" class="md-nav__link">
+  <a href="#chapter-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      Role Structure Overview
+      Chapter Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Architectural Principles
     </span>
   </a>
   
@@ -703,12 +594,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../authorization-framework/" class="md-nav__link">
+      <a href="system-architecture/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Authorization Framework
+    Dual-Layer Architecture
     
   </span>
   
@@ -726,12 +617,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../token-based-authentication/" class="md-nav__link">
+      <a href="core-concepts/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Token-Based Authentication
+    Core Concepts
     
   </span>
   
@@ -749,12 +640,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../tcp-streaming-security/" class="md-nav__link">
+      <a href="security-framework/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    TCP Streaming Security
+    Security Framework
     
   </span>
   
@@ -822,12 +713,78 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-endpoints/" class="md-nav__link">
+      <a href="../api-endpoints/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    REST API
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-endpoints/getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guide
     
   </span>
   
@@ -845,12 +802,86 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-endpoints/session-management/" class="md-nav__link">
+      <a href="../api-endpoints/getting-started/common-workflows/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Session Management
+    Common Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-endpoints/reference/endpoints-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Endpoints Reference
     
   </span>
   
@@ -868,17 +899,25 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-endpoints/session-logging/" class="md-nav__link">
+      <a href="../api-endpoints/reference/role-permissions/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Session Logging
+    Endpoint Permissions Matrix
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -891,81 +930,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api-endpoints/tlc-registration/" class="md-nav__link">
+      <a href="../api-reference/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    TLC Registration
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../api-endpoints/authorization-management/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Authorization Management
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../api-endpoints/authorization-token-management/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Authorization Token Management
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../api-reference/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    API Reference
+    OpenAPI specification
     
   </span>
   
@@ -1033,12 +1003,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tcp-streaming-protocol/" class="md-nav__link">
+      <a href="../tcp-streaming-protocol/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    TCP Streaming Protocol
+    Introduction
     
   </span>
   
@@ -1056,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tcp-streaming-protocol/protocol-fundamentals/" class="md-nav__link">
+      <a href="../tcp-streaming-protocol/protocol-fundamentals/" class="md-nav__link">
         
   
   
@@ -1079,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tcp-streaming-protocol/communication-modes/" class="md-nav__link">
+      <a href="../tcp-streaming-protocol/communication-modes/" class="md-nav__link">
         
   
   
@@ -1102,7 +1072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tcp-streaming-protocol/datagram-types/" class="md-nav__link">
+      <a href="../tcp-streaming-protocol/datagram-types/" class="md-nav__link">
         
   
   
@@ -1125,12 +1095,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tcp-streaming-protocol/connection-management/" class="md-nav__link">
+      <a href="../tcp-streaming-protocol/connection-management/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Connection Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tcp-streaming-protocol/protocol-enforcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Protocol Enforcement
     
   </span>
   
@@ -1155,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1166,6 +1159,79 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/evolution-terminology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terminology Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1197,18 +1263,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#role-categories" class="md-nav__link">
+  <a href="#architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Role Categories
+      Architecture Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#role-structure-overview" class="md-nav__link">
+  <a href="#chapter-contents" class="md-nav__link">
     <span class="md-ellipsis">
-      Role Structure Overview
+      Chapter Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Architectural Principles
     </span>
   </a>
   
@@ -1233,94 +1308,48 @@
   
 
 
-<h1 id="role-based-access-model">Role-Based Access Model</h1>
-<p>The Subject Interface implements a role-based access control system that provides flexible permissions management for different organizational and operational requirements.</p>
-<p>The role-based system provides three categories of access, each with administrative, operational, and analytical variants.</p>
-<h2 id="role-categories">Role Categories</h2>
+<h1 id="architecture">Architecture</h1>
+<p>This chapter covers the Subject Interface system architecture, security framework, and access control mechanisms.</p>
+<div class="admonition note">
+<p class="admonition-title">TLC Terminology</p>
+<p>The interface originally served Traffic Light Controllers (TLCs), and this legacy terminology persists in the API specifications for backward compatibility. "TLC" now refers to any connected entity: traffic controllers, sensors, barriers, displays, or any C-ITS participant. See <a href="appendix/evolution-terminology.md">Terminology Reference</a> for the mapping between legacy and generic terminology.</p>
+</div>
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Subject Interface employs a dual-layer architecture for administrative control and data exchange:</p>
+<ul>
+<li><strong>JSON-REST API Layer</strong> - Administrative control, lifecycle management, and configuration</li>
+<li><strong>TCP Streaming Protocol Layer</strong> - Real-time data exchange</li>
+</ul>
+<h2 id="chapter-contents">Chapter Contents</h2>
+<ul>
+<li><strong><a href="system-architecture/">Dual-Layer Architecture</a></strong> - Dual-layer architecture, API nodes, streaming service nodes, and component interactions</li>
+<li><strong><a href="core-concepts/">Core Concepts</a></strong> - System entities, role-based access control, and session behaviors</li>
+<li><strong><a href="security-framework/">Security Framework</a></strong> - Authorization framework, token-based authentication, and TCP streaming security</li>
+</ul>
+<h2 id="key-architectural-principles">Key Architectural Principles</h2>
 <table>
 <thead>
 <tr>
-<th>Category</th>
-<th>Purpose</th>
-<th>Typical Users</th>
-<th>Key Capabilities</th>
+<th>Principle</th>
+<th>Implementation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>TLC</strong></td>
-<td>Subject ownership and data generation</td>
-<td>Roadside equipment operators, central system administrators</td>
-<td>Direct control, data generation/transmission, session lifecycle, subject configuration</td>
+<td><strong>Separation of Concerns</strong></td>
+<td>Distinct REST API and streaming layers</td>
 </tr>
 <tr>
-<td><strong>BROKER</strong></td>
-<td>Data distribution and routing</td>
-<td>Service providers, system integrators</td>
-<td>Multi-subject handling, value-added services, data aggregation, cross-domain operations</td>
+<td><strong>Scalability</strong></td>
+<td>Horizontal scaling, distributed architecture</td>
 </tr>
 <tr>
-<td><strong>MONITOR</strong></td>
-<td>Data observation and analysis</td>
-<td>Monitoring platforms, research systems</td>
-<td>Read-only access, performance monitoring, analytics, compliance verification</td>
-</tr>
-</tbody>
-</table>
-<h2 id="role-structure-overview">Role Structure Overview</h2>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Usage</th>
-<th>Primary Function</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>TLC_ADMIN</strong></td>
-<td>Administrative</td>
-<td>Manage subject registrations, authorizations, and tokens</td>
+<td><strong>Security in Depth</strong></td>
+<td>Multi-layer security model</td>
 </tr>
 <tr>
-<td><strong>TLC_SYSTEM</strong></td>
-<td>Operational</td>
-<td>Create/update sessions and stream data for assigned subjects</td>
-</tr>
-<tr>
-<td><strong>TLC_ANALYST</strong></td>
-<td>Diagnostics</td>
-<td>Monitor and analyze subject-specific data and sessions</td>
-</tr>
-<tr>
-<td><strong>BROKER_ADMIN</strong></td>
-<td>Administrative</td>
-<td>Manage broker service authorizations and configurations</td>
-</tr>
-<tr>
-<td><strong>BROKER_SYSTEM</strong></td>
-<td>Operational</td>
-<td>Create multiplex sessions and distribute data across subjects</td>
-</tr>
-<tr>
-<td><strong>BROKER_ANALYST</strong></td>
-<td>Diagnostics</td>
-<td>Monitor and analyze broker service performance and data flows</td>
-</tr>
-<tr>
-<td><strong>MONITOR_ADMIN</strong></td>
-<td>Administrative</td>
-<td>Manage monitoring service access and configurations</td>
-</tr>
-<tr>
-<td><strong>MONITOR_SYSTEM</strong></td>
-<td>Operational</td>
-<td>Create read-only sessions and receive data from multiple subjects</td>
-</tr>
-<tr>
-<td><strong>MONITOR_ANALYST</strong></td>
-<td>Diagnostics</td>
-<td>Analyze monitoring data and system performance trends</td>
+<td><strong>Operational Flexibility</strong></td>
+<td>Configurable security levels, multiple tokens</td>
 </tr>
 </tbody>
 </table>
@@ -1359,7 +1388,7 @@
     </a>
   
   
-    | Document version 0.2.0
+    | Document version 0.3.0
   
 </div>
       
@@ -1375,10 +1404,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.2.0"}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.3.0"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>

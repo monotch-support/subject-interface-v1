@@ -1620,8 +1620,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars, lowercase alphanumeric, underscore, hyphen)
 
     ResponseAuthorization:
       type: object
@@ -1724,8 +1724,8 @@ components:
       properties:
         identifier:
           type: string
-          pattern: '^[a-z0-9]{8}$'
-          description: TLC identifier (8 chars, lowercase)
+          pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifier (8 chars, lowercase alphanumeric, underscore, hyphen)
         domain:
           type: string
           description: Domain name (converted to lowercase)
@@ -1904,8 +1904,8 @@ components:
           $ref: '#/components/schemas/SecurityMode'
         tlcIdentifier:
           type: string
-          pattern: '^[a-z0-9]{8}$'
-          description: TLC identifier (8 chars, lowercase)
+          pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifier (8 chars, lowercase alphanumeric, underscore, hyphen)
 
     RequestTCPStreamingMultiplexSessionDetails:
       type: object
@@ -1918,8 +1918,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars each, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars each, lowercase alphanumeric, underscore, hyphen)
 
     RequestVlogSessionDetails:
       type: object
@@ -1936,8 +1936,8 @@ components:
           description: VLOG port
         tlcIdentifier:
           type: string
-          pattern: '^[a-z0-9]{8}$'
-          description: TLC identifier (8 chars, lowercase)
+          pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifier (8 chars, lowercase alphanumeric, underscore, hyphen)
         itf:
           type: string
           description: ITF configuration
@@ -1952,8 +1952,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars each, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars each, lowercase alphanumeric, underscore, hyphen)
 
     RequestClientTCPStreamingMultiplexSessionDetails:
       type: object
@@ -1966,8 +1966,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars each, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars each, lowercase alphanumeric, underscore, hyphen)
 
     # Connection initiation details for session responses
     ResponseSessionDetailsConnectionInitiation:
@@ -2248,8 +2248,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars each, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars each, lowercase alphanumeric, underscore, hyphen)
 
     RequestSessionTemplateClientTcpStreamingDetails:
       type: object
@@ -2262,8 +2262,8 @@ components:
           type: array
           items:
             type: string
-            pattern: '^[a-z0-9]{8}$'
-          description: TLC identifiers (8 chars each, lowercase)
+            pattern: '^[a-z0-9_-]{8}$'
+          description: TLC identifiers (8 chars each, lowercase alphanumeric, underscore, hyphen)
 
     ResponseSessionTemplateIf2Details:
       type: object
