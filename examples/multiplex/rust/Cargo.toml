@@ -1,0 +1,20 @@
+[package]
+name = "multiplex-example"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "main"
+path = "main.rs"
+
+[dependencies]
+reqwest = { version = "0.12", features = ["json", "native-tls"], default-features = false }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+native-tls = "0.2"
+rand = "0.8"
+log = "0.4"
+env_logger = "0.11"
+lazy_static = "1.4"
+ctrlc = "3.4"
