@@ -1,0 +1,63 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#d32f2f"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1976d2"/>
+    </marker>
+  </defs>
+
+  <!-- TLC (Left - Red) - Larger -->
+  <rect x="50" y="100" width="120" height="80" fill="#ffcdd2" stroke="#d32f2f" stroke-width="2" rx="8"/>
+  <text x="110" y="130" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#d32f2f">TLC</text>
+  <text x="110" y="155" font-family="Arial" font-size="14" text-anchor="middle" fill="#d32f2f">(exclusive)</text>
+
+  <!-- Streaming Service (Middle - Gray Hub) - Larger -->
+  <rect x="320" y="50" width="120" height="180" fill="#e0e0e0" stroke="#757575" stroke-width="2" rx="8"/>
+  <text x="380" y="135" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#424242">Streaming</text>
+  <text x="380" y="155" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#424242">Service</text>
+
+  <!-- Broker A (Right Top - Blue) - Larger -->
+  <rect x="490" y="50" width="120" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8"/>
+  <text x="550" y="80" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1976d2">Broker A</text>
+  <text x="550" y="105" font-family="Arial" font-size="14" text-anchor="middle" fill="#1976d2">(Account A)</text>
+
+  <!-- Broker B (Right Bottom - Blue) - Larger -->
+  <rect x="490" y="150" width="120" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8"/>
+  <text x="550" y="180" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1976d2">Broker B</text>
+  <text x="550" y="205" font-family="Arial" font-size="14" text-anchor="middle" fill="#1976d2">(Account B)</text>
+
+  <!-- Monitor (Bottom - Dark Blue) - Larger -->
+  <rect x="320" y="280" width="120" height="80" fill="#c5cae9" stroke="#0d47a1" stroke-width="2" rx="8"/>
+  <text x="380" y="310" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#0d47a1">Monitor</text>
+  <text x="380" y="335" font-family="Arial" font-size="14" text-anchor="middle" fill="#0d47a1">(read-only)</text>
+
+  <!-- Data flow arrows colored by origin - More vertical spacing -->
+  
+  <!-- TLC: Red out, Blue in -->
+  <line x1="170" y1="125" x2="315" y2="125" stroke="#d32f2f" stroke-width="3" marker-end="url(#arrow-red)"/>
+  <line x1="315" y1="155" x2="175" y2="155" stroke="#1976d2" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <!-- Brokers: Red out, Blue in (inverted) -->
+  <!-- Broker A -->
+  <line x1="440" y1="75" x2="485" y2="75" stroke="#d32f2f" stroke-width="3" marker-end="url(#arrow-red)"/>
+  <line x1="485" y1="105" x2="445" y2="105" stroke="#1976d2" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <!-- Broker B -->
+  <line x1="440" y1="175" x2="485" y2="175" stroke="#d32f2f" stroke-width="3" marker-end="url(#arrow-red)"/>
+  <line x1="485" y1="205" x2="445" y2="205" stroke="#1976d2" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <!-- Monitor: Red in, Blue in (observing both data flows) - Increased horizontal spacing -->
+  <line x1="370" y1="230" x2="370" y2="275" stroke="#d32f2f" stroke-width="3" marker-end="url(#arrow-red)"/>
+  <line x1="390" y1="230" x2="390" y2="275" stroke="#1976d2" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <!-- Key Architecture Box - 50% wider -->
+  <rect x="50" y="230" width="225" height="130" fill="#fff59d" stroke="#f9a825" stroke-width="2" rx="5"/>
+  <text x="60" y="255" font-family="Arial" font-size="14" font-weight="bold" text-anchor="start" fill="#e65100">Key Architecture:</text>
+  <text x="60" y="275" font-family="Arial" font-size="12" fill="#333">• One TLC session per</text>
+  <text x="70" y="290" font-family="Arial" font-size="12" fill="#333">identifier (exclusive)</text>
+  <text x="60" y="310" font-family="Arial" font-size="12" fill="#333">• Multiple Broker sessions</text>
+  <text x="70" y="325" font-family="Arial" font-size="12" fill="#333">(one per Account)</text>
+  <text x="60" y="345" font-family="Arial" font-size="12" fill="#333">• Monitor sessions observe</text>
+</svg>

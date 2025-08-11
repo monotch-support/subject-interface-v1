@@ -1,0 +1,58 @@
+site_name: Subject Interface v1
+site_url: https://monotch-support.github.io/subject-interface-v1
+repo_url: https://github.com/monotch-support/subject-interface-v1
+theme:
+  name: material
+  custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.sections
+    - content.code.copy
+nav:
+  - Home:
+      - Introduction: index.md
+      - Communication Patterns: introduction/communication-patterns.md
+  - Architecture:
+      - Introduction: architecture/index.md
+      - Dual-Layer Architecture: architecture/system-architecture.md
+      - Core Concepts: architecture/core-concepts.md
+      - Security Framework: architecture/security-framework.md
+  - REST API:
+      - Introduction: api-endpoints/index.md
+      - Getting Started:
+          - Quick Start Guide: api-endpoints/getting-started/quick-start.md
+          - Common Workflows: api-endpoints/getting-started/common-workflows.md
+      - Reference:
+          - API Endpoints Reference: api-endpoints/reference/endpoints-reference.md
+          - Endpoint Permissions Matrix: api-endpoints/reference/role-permissions.md
+      - OpenAPI specification: api-reference.md
+  - TCP Streaming Protocol:
+      - Introduction: tcp-streaming-protocol/index.md
+      - Protocol Fundamentals: tcp-streaming-protocol/protocol-fundamentals.md
+      - Communication Modes: tcp-streaming-protocol/communication-modes.md
+      - Datagram Types: tcp-streaming-protocol/datagram-types.md
+      - Connection Management: tcp-streaming-protocol/connection-management.md
+      - Protocol Enforcement: tcp-streaming-protocol/protocol-enforcement.md
+  - Example: examples/index.md
+  - Appendix:
+      - Terminology Reference: appendix/evolution-terminology.md
+extra_css:
+  - stylesheets/width.css
+  - stylesheets/neoteroi-css-v1.1.2.css
+plugins:
+  - search
+  - include-markdown
+  - macros
+  - neoteroi.mkdocsoad:
+      use_pymdownx: true
+markdown_extensions:
+  - admonition
+  - plantuml_markdown
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+extra:
+  version: 0.4.0
